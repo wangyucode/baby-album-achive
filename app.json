@@ -1,0 +1,32 @@
+{
+    "pages": [
+        "pages/album/album",
+        "pages/my/my",
+        "pages/my/update-log/update-log",
+        "pages/my/support-operation/support-operation",
+        "pages/my/support-operation/more-app/more-app"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ee7785",
+        "navigationBarTitleText": "宝宝圈亲友云相册",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "selectedColor": "#ee7785",
+        "list": [
+            {
+                "iconPath": "assets/icons/album.png",
+                "selectedIconPath": "assets/icons/album_select.png",
+                "pagePath": "pages/album/album",
+                "text": "相册"
+            },
+            {
+                "iconPath": "assets/icons/people.png",
+                "selectedIconPath": "assets/icons/people_fill.png",
+                "pagePath": "pages/my/my",
+                "text": "我的"
+            }
+        ]
+    }
+}

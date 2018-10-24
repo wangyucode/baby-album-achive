@@ -1,0 +1,34 @@
+<!-- /pages/my/support-operation/support-operation.wxml -->
+<view class='view-container'>
+    <view class='top-view-container'>
+        <image src='/assets/icons/xiexie.jpg' class='top-view-image'></image>
+        <text class='top-view-text'>宝宝圈亲友云相册的维护更新离不开您的支持！您可以通过以下方式支持我们！</text>
+    </view>
+    <view class='gray-view'></view>
+    <button class="btn-share" hover-class="btn-share-hover" open-type="share">
+        <view class='share-item'>
+            <image class='share-left-image' src='/assets/icons/share.png'></image>
+            <text class='list-item-text-info'>分享小程序给亲友们</text>
+            <image class='right-arrow' src='/assets/icons/arrow_down.png'></image>
+        </view>
+    </button>
+    <view class='line'></view>
+    <navigator url='/pages/my/support-operation/more-app/more-app' open-type="navigate">
+        <view class='list-item' hover-class='list-item-hover'>
+            <text class='list-item-text-info'>更多我的小程序</text>
+            <view class='flex-open'></view>
+            <image class='right-arrow' src='/assets/icons/arrow_down.png'></image>
+        </view>
+    </navigator>
+    <view class='line'></view>
+    <view class='list-item' bindtap="toReward" hover-class='list-item-hover'>
+        <text class='list-item-text-info'>打赏我</text>
+        <view class='flex-open'></view>
+        <image class='right-arrow' src='/assets/icons/arrow_down.png'></image>
+    </view>
+    <view class='line'></view>
+    <view class='list-item'>
+        <text class='list-item-text-info'>联系我？请访问网址 wycode.cn</text>
+    </view>
+    <view style='flex: 1;background: #ddd;'></view>
+</view>

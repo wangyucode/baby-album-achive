@@ -1,0 +1,47 @@
+/* /pages/my/update-log/update-log.wxss */
+
+.view-container {
+  display: flex;
+  flex-direction: column;
+  margin: 15rpx;
+}
+
+.top-view-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rpx;
+  font-weight: bold;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item-version {
+  font-size: 32rpx;
+  color: #003;
+  font-weight: bold;
+  margin-left: 10rpx;
+}
+
+.list-item-contents {
+  display: flex;
+  flex-direction: row;
+  margin-left: 45rpx;
+  margin-top: 5rpx;
+}
+
+.back-dian {
+  background: #003;
+  width: 8rpx;
+  height: 8rpx;
+  margin-top: 12rpx;
+}
+
+.list-item-detail {
+  font-size: 30rpx;
+  color: #003;
+  margin-left: 15rpx;
+}
