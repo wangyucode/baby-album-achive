@@ -1,1 +1,17 @@
 /* pages/album/album.wxss */
+page{
+  height: 100%;
+}
+.container-album{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+}
+
+.album{
+  margin: 24rpx;
+  width: 42%;
+  height: 50vw;
+  background-color: #00f;
+}

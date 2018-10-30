@@ -1,2 +1,16 @@
 <!--pages/album/album.wxml-->
-<text>pages/album/album.wxml</text>
+<view class='container-album'>
+
+  <view class="album">
+  </view>
+
+  <view class="album">
+  </view>
+
+  <view class="album">
+  </view>
+
+  <view class="album">
+  </view>
+
+</view>
