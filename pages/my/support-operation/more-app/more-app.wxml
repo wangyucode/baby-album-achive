@@ -1,22 +1,51 @@
 <!-- pages/my/support-operation/more-app/more-app.wxml -->
 <view class='view-container'>
-    <view class='my-item' hover-class='my-item-hover' bindtap="toRoll">
-        <image class="image-logo" src='/assets/roll.jpg' />
-        <view class="vbox">
-            <text class="text-logo">3D滚蛋吧</text>
-            <text class='my-item-desc'>一起来玩滚蛋吧，看谁滚的远。</text>
-        </view>
-        <view class='flex-open'></view>
-        <image class='my-item-right-arrow' src='/assets/icons/arrow_down.png'></image>
+<navigator target="miniProgram" open-type="navigate" app-id="wxa6e870e9d665b10b" version="release">
+  <view class='my-item' hover-class='my-item-hover' bindtap="toRoll">
+    <image class="image-logo" src='/assets/roll.jpg' />
+    <view class="vbox">
+      <text class="text-logo">3D滚蛋吧</text>
+      <text class='my-item-desc'>一起来玩滚蛋吧，看谁滚的远。</text>
     </view>
-    <view class='dividing-line' />
+    <view class='flex-open'></view>
+    <image class='my-item-right-arrow' src='/assets/icons/arrow_down.png'></image>
+  </view>
+  </navigator>
+  <view class='dividing-line' />
+  <navigator target="miniProgram" open-type="navigate" app-id="wx1d777be6c442da17" version="release">
+  <view class='my-item' hover-class='my-item-hover' bindtap="toFish">
+    <image src='/assets/fish_logo.jpg' class='image-logo'></image>
+    <view class='vbox'>
+      <text class='text-logo"'>养鱼小助手</text>
+      <text class='my-item-desc'>造福鱼友，这里有你想要的一切!</text>
+    </view>
+    <view class='flex-open'></view>
+    <image src='/assets/icons/arrow_down.png' class='my-item-right-arrow'></image>
+  </view>
+  </navigator>
+  <view class='dividing-line' />
+  <navigator target="miniProgram" open-type="navigate" app-id="wx8a383e1143f5b2c9" version="release">
+    <view class='my-item' hover-class='my-item-hover' bindtap="toDota">
+      <image class="image-logo" src='/assets/dota.jpg' />
+      <view class="vbox">
+        <text class="text-logo">DOTA2英雄技能物品天梯助手</text>
+        <text class='my-item-desc'>玩DOTA2，查询英雄属性、技能、物品、天梯排行。</text>
+      </view>
+      <view class='flex-open'></view>
+      <image class='my-item-right-arrow' src='/assets/icons/arrow_down.png'></image>
+    </view>
+  </navigator>
+  <view class='dividing-line' />
+  <navigator target="miniProgram" open-type="navigate" app-id="wx1977172112eb7b61" version="release">
     <view class='my-item' hover-class='my-item-hover' bindtap="toClipboard">
-        <image class="image-logo" src='/assets/clipboard.jpg' />
-        <view class="vbox">
-            <text class="text-logo">跨平台剪切板</text>
-            <text class='my-item-desc'>无需登录，跨平台，跨设备记录文字、网址。</text>
-        </view>
-        <view class='flex-open'></view>
-        <image class='my-item-right-arrow' src='/assets/icons/arrow_down.png'></image>
+      <image class="image-logo" src='/assets/clipboard.jpg' />
+      <view class="vbox">
+        <text class="text-logo">跨平台剪切板</text>
+        <text class='my-item-desc'>无需登录，跨平台，跨设备记录文字、网址。</text>
+      </view>
+      <view class='flex-open'></view>
+      <image class='my-item-right-arrow' src='/assets/icons/arrow_down.png'></image>
     </view>
+  </navigator>
+  <view style='flex: 1;background: #ddd;'></view>
 </view>

@@ -1,48 +1,49 @@
 /* pages/my/support-operation/more-app/more-app.wxss */
-page{
-    height: 100%;
+
+page {
+  height: 100%;
 }
 
 .view-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.my-item{
-    display: flex;
-    align-items: center;
-    padding: 24rpx;
-    background-color: white;
-    width: 94%;
-  }
-  
-  .my-item-hover{
-    background-color: #eee;
-  }
-  
-  .my-item-text{
-    font-size: 26rpx;
-  }
-  
-  .my-item-desc{
-    font-size: 24rpx;
-    color: #555;
-    margin-top: 12rpx;
-  }
-  
-  .my-item-right-arrow{
-    width: 36rpx;
-    height: 36rpx;
-  }
+.my-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background-color: white;
+  width: 94%;
+}
 
-  .image-logo{
-    width: 128rpx;
-    height: 128rpx;
-    margin-right: 24rpx;
-  }
-  
-  .text-logo{
-    font-size: 26rpx;
-    width: 40%;
-  }
+.my-item-hover {
+  background-color: #eee;
+}
+
+.my-item-text {
+  font-size: 26rpx;
+}
+
+.my-item-desc {
+  font-size: 24rpx;
+  color: #555;
+  margin-top: 12rpx;
+}
+
+.my-item-right-arrow {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.image-logo {
+  width: 128rpx;
+  height: 128rpx;
+  margin-right: 24rpx;
+}
+
+.text-logo {
+  font-size: 26rpx;
+  width: 70%;
+}

@@ -1,17 +1,23 @@
 /**app.wxss**/
 
 .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .vbox {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-open {
+  flex: 1;
+}
 
 
-  .flex-open{
-    flex: 1
-  }
+.dividing-line {
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+}
