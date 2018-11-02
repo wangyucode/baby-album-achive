@@ -1,18 +1,21 @@
 // pages/album/album.js
+
+var app = getApp()
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        albums: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        app.loginCallback = this.getAlbums;
     },
 
     /**
@@ -62,5 +65,20 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    getAlbums: function () {
+        wx.request({
+            url: 'https://wycode.cn/web/api/public/album/getAlbums',
+            data: {
+                'accessKey': app.globalData.accessKey
+            },
+            success: res => {
+                console.log("getAlbums->", res)
+                if (res.statusCode == 200 && res.data.success) {
+                    this.setData({ albums: res.data.data })
+                }
+            }
+        })
     }
 })

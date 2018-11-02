@@ -1,16 +1,7 @@
-<!--pages/album/album.wxml-->
+<!-- pages/album/album.wxml -->
 <view class='container-album'>
-
-  <view class="album">
-  </view>
-
-  <view class="album">
-  </view>
-
-  <view class="album">
-  </view>
-
-  <view class="album">
-  </view>
-
+  <image wx:if="{{albums==null||albums.length==0}}" class="no-album-image" src=""></image>
+  <block wx:else>
+    <view class="album" wx:for="{{albums}}"></view>
+  </block>
 </view>

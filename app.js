@@ -1,18 +1,19 @@
 //app.js
 App({
-    onLaunch: function() {
-        // wx.showLoading({
-        //     title: '登录中...',
-        // })
+    onLaunch: function () {
+        wx.showLoading({
+            title: '登录中...',
+        })
         // 登录
-        // this.doLogin();
+        this.doLogin();
+
     },
     globalData: {
         userInfo: null,
         accessKey: ''
     },
 
-    doLogin: function() {
+    doLogin: function () {
         var that = this;
         // 登录
         wx.login({
@@ -24,11 +25,15 @@ App({
                         data: {
                             'jsCode': res.code
                         },
-                        success: function(res) {
+                        success: function (res) {
+                            console.log("login->",res)
                             if (res.statusCode == 200 && res.data.success) {
-                                let key = res.data.data;
-                                that.globalData.accessKey = key;
+                                that.globalData.accessKey = res.data.data;
+                                if(that.loginCallback){
+                                  that.loginCallback();
+                                }
                                 wx.hideLoading()
+                                that.tryGetUserInfo();
                             }
                         }
                     })
@@ -42,7 +47,7 @@ App({
         })
     },
 
-    tryGetUserInfo: function() {
+    tryGetUserInfo: function () {
         // 获取用户信息
         wx.getSetting({
             success: res => {
@@ -52,14 +57,7 @@ App({
                         success: res => {
                             // 可以将 res 发送给后台解码出 unionId
                             this.globalData.userInfo = res.userInfo
-
                             this.postUserInfo();
-
-                            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                            // 所以此处加入 callback 以防止这种情况
-                            // if (this.userInfoReadyCallback) {
-                            //     this.userInfoReadyCallback(res)
-                            // }
                         }
                     })
                 }
@@ -67,7 +65,24 @@ App({
         })
     },
 
-    postUserInfo: function() {
-
+    postUserInfo: function () {
+        wx.request({
+            url: 'https://wycode.cn/web/api/public/album/updateUserInfo',
+            method: 'POST',
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
+            data: {
+                'accessKey': this.globalData.accessKey,
+                'avatarUrl': this.globalData.userInfo.avatarUrl,
+                'city': this.globalData.userInfo.city,
+                'country': this.globalData.userInfo.country,
+                'gender': this.globalData.userInfo.gender,
+                'language': this.globalData.userInfo.language,
+                'nickName': this.globalData.userInfo.nickName,
+                'province': this.globalData.userInfo.province
+            },
+            success: function (res) {
+                console.log("postUserInfo->",res)
+            }
+        })
     }
 })
