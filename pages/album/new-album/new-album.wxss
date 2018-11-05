@@ -1,0 +1,14 @@
+/* pages/album/new-album/new-album.wxss */
+.container-new-album{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-name{
+    margin: 24rpx;
+    border: 1px solid;
+    font-size: 30rpx;
+    border-radius: 10rpx;
+    border-color: #ddd;
+    padding: 10rpx;
+  }

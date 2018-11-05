@@ -9,6 +9,37 @@ page{
   align-content: space-around;
 }
 
+.no-album-image{
+  width: 80%;
+  margin-top: 24rpx;
+}
+
+.no-album-text{
+  font-size: 32rpx;
+  color: #999;
+}
+
+.btn-new-album{
+  width: 160rpx;
+  width: 160rpx;
+  height: 160rpx;
+  position: fixed;
+  bottom: 48rpx;
+  right: 48rpx;
+  padding: 0;
+}
+
+button[plain] {
+  border:none;
+  background-color:transparent;
+}
+  
+
+.img-new-album{
+  width: 160rpx;
+  height: 160rpx;
+}
+
 .album{
   margin: 24rpx;
   width: 42%;

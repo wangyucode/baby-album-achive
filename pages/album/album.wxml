@@ -1,7 +1,14 @@
 <!-- pages/album/album.wxml -->
 <view class='container-album'>
-  <image wx:if="{{albums==null||albums.length==0}}" class="no-album-image" src=""></image>
+  <block wx:if="{{albums==null||albums.length==0}}">
+    <image class="no-album-image" src="/assets/no_photo.png"></image>
+    <text class="no-album-text">没有相册，新建一个吧！</text>
+  </block>
   <block wx:else>
     <view class="album" wx:for="{{albums}}"></view>
   </block>
+
+  <button class="btn-new-album" bindtap="onNewAlbumClicked" plain='ture' open-type="getUserInfo" bindgetuserinfo="getUserInfoResult">
+    <image class='img-new-album' src='/assets/icons/new-album.png'></image>
+  </button>
 </view>

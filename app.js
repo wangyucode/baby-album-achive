@@ -3,6 +3,7 @@ App({
     onLaunch: function () {
         wx.showLoading({
             title: '登录中...',
+            mask: true
         })
         // 登录
         this.doLogin();
@@ -26,11 +27,11 @@ App({
                             'jsCode': res.code
                         },
                         success: function (res) {
-                            console.log("login->",res)
+                            console.log("login->", res)
                             if (res.statusCode == 200 && res.data.success) {
                                 that.globalData.accessKey = res.data.data;
-                                if(that.loginCallback){
-                                  that.loginCallback();
+                                if (that.loginCallback) {
+                                    that.loginCallback();
                                 }
                                 wx.hideLoading()
                                 that.tryGetUserInfo();
@@ -81,7 +82,7 @@ App({
                 'province': this.globalData.userInfo.province
             },
             success: function (res) {
-                console.log("postUserInfo->",res)
+                console.log("postUserInfo->", res)
             }
         })
     }

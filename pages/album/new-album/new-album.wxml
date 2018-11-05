@@ -1,0 +1,4 @@
+<!-- pages/album/new-album/new-album.wxml -->
+<view class="container-new-album">
+    <input class="input-name" placeholder='相册名*' maxlength='32' bindinput='inputAlbumName' value="{{name}}"></input>
+</view>

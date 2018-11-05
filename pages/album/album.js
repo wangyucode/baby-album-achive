@@ -80,5 +80,21 @@ Page({
                 }
             }
         })
+    },
+
+    getUserInfoResult: function (e) {
+        console.log("getUserInfoResult->", e)
+        if (e.detail.errMsg == "getUserInfo:ok") {
+            app.globalData.userInfo = e.detail.userInfo;
+            app.postUserInfo();
+            wx.navigateTo({
+                url: './new-album/new-album'
+              })
+        } else {
+            wx.showToast({
+                icon: "none",
+                title: '请授予昵称权限！'
+            })
+        }
     }
 })
