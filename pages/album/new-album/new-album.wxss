@@ -2,6 +2,7 @@
 .container-new-album{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
 .input-name{
@@ -11,4 +12,83 @@
     border-radius: 10rpx;
     border-color: #ddd;
     padding: 10rpx;
+    width: 90%
+  }
+
+  .container-manager{
+    display: flex;
+    align-items: center
+  }
+
+  .add-user{
+    width: 100rpx;
+    height: 100rpx;
+  }
+
+  .btn-add-user{
+    padding: 0;
+    margin-bottom: 18rpx;
+  }
+
+  button[plain] {
+    border:none;
+    background-color:transparent;
+  }
+
+  .container-manager-admin{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 24rpx;
+  }
+
+
+  .text-manager{
+      font-size: 36rpx;
+      margin-left: 24rpx;
+  }
+
+  .text-manager-name{
+    font-size: 28rpx;
+    margin-top: 12rpx;
+  }
+
+  .image-manager{
+      width: 96rpx;
+      height: 96rpx;
+      border-radius: 48rpx;
+      
+  }
+
+  .btn-ok{
+      position: fixed;
+      width: 90%;
+      align-self: center;
+      bottom: 24rpx;
+  }
+
+  .container-photo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+    width: 93%;
+    margin: 24rpx;
+  }
+
+  .img-photo{
+      width: 29%;
+      height: 27vw;
+      box-shadow: 10rpx 10rpx 5px #888888;
+      border:1px solid #BFBFBF;
+      margin: 5rpx;
+  }
+
+  .img-add-photo{
+    width: 29%;
+    height: 27vw;
+    box-shadow: 10rpx 10rpx 5px #888888;
+    border:1px solid #BFBFBF;
+    padding: 10rpx;
+    margin: 5rpx;
   }

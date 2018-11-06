@@ -5,7 +5,8 @@
     "pages/my/update-log/update-log",
     "pages/my/support-operation/support-operation",
     "pages/my/support-operation/more-app/more-app",
-    "pages/album/new-album/new-album"
+    "pages/album/new-album/new-album",
+    "pages/album/new-album/new-photo/new-photo"
   ],
   "window": {
     "backgroundTextStyle": "light",

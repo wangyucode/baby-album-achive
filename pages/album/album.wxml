@@ -8,7 +8,7 @@
     <view class="album" wx:for="{{albums}}"></view>
   </block>
 
-  <button class="btn-new-album" bindtap="onNewAlbumClicked" plain='ture' open-type="getUserInfo" bindgetuserinfo="getUserInfoResult">
+  <button class="btn-new-album" plain='ture' open-type="getUserInfo" bindgetuserinfo="getUserInfoResult">
     <image class='img-new-album' src='/assets/icons/new-album.png'></image>
   </button>
 </view>
