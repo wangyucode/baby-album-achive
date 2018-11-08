@@ -1,1 +1,35 @@
 /* pages/album/new-album/new-photo/new-photo.wxss */
+.container-add-photo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img-upload{
+    width: 95%;
+    height: 95vw;
+    background: #eee;
+    padding: 24rpx;
+    align-self: center;
+}
+
+.progress{
+    margin: 24rpx;
+}
+
+.input-desc{
+    margin: 24rpx;
+    border: 1px solid;
+    font-size: 30rpx;
+    border-radius: 10rpx;
+    border-color: #ddd;
+    padding: 10rpx;
+    width: 90%
+  }
+
+.btn-add{
+    position: fixed;
+      width: 92%;
+      align-self: center;
+      bottom: 24rpx;
+}

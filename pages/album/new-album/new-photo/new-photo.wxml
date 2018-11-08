@@ -1,2 +1,12 @@
 <!--pages/album/new-album/new-photo/new-photo.wxml-->
-<text>pages/album/new-album/new-photo/new-photo.wxml</text>
+<view class="container-add-photo">
+
+    <image class="img-upload" src="{{image}}"  bindtap="chooseImage" mode="aspectFit"/>
+
+    <progress class="progress" activeColor="#ee7785" hidden="{{!isUploading}}" percent="{{progress}}"/>
+
+    <input class="input-desc" placeholder='相片描述' maxlength='128' bindinput='inputDesc'></input>
+
+    <button class="btn-add" type="primary" loading="{{isUploading||isAdding}}" bindtap="onTapAdd" disabled="{{isUploading||isAdding}}">追加</button>
+
+</view>

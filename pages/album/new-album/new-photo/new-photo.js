@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    image: "/assets/icons/add_image.png",
+    isUploading: false,
+    progress: 0,
+    isAdding: false,
+    imageURL: "",
+    desc: ""
   },
 
   /**
@@ -62,5 +67,86 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  chooseImage: function () {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ["compressed"],
+      success: res => {
+        this.data.imageURL=""
+        // tempFilePath可以作为img标签的src属性显示图片
+        this.setData({
+          image: res.tempFilePaths[0],
+          isUploading: true
+        })
+
+        this.uploadImage(res.tempFilePaths[0])
+      }
+    })
+  },
+
+  uploadImage: function (path) {
+
+    wx.showLoading({
+      title: '请稍候...',
+      mask: true
+    })
+
+    const uploadTask = wx.uploadFile({
+      url: 'https://wycode.cn/web/api/public/upload',
+      filePath: path,
+      name: 'file',
+      success: (res) => {
+        let data = JSON.parse(res.data);
+        console.log("uploadImage->", res)
+        if (res.statusCode == 200 && data.success) {
+          this.data.imageURL = data.data
+          wx.showToast({
+            title: "上传成功!"
+          });
+        }
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: res.errMsg,
+          icon: 'none'
+        });
+      },
+      complete: (res) => {
+        this.setData({ isUploading: false })
+      },
+    })
+
+    uploadTask.onProgressUpdate((res) => {
+      this.setData({ progress: res.progress })
+    })
+  },
+
+  inputDesc: function (e) {
+    this.data.desc = e.detail.value
+  },
+
+  onTapAdd:function(){
+    if(this.data.imageURL==""){
+      wx.showToast({
+        title: "请先选择图片",
+        icon: 'none'
+      });
+      return;
+    }
+
+    this.addPhoto()
+  },
+
+  addPhoto:function(){
+    wx.showLoading({
+      title: '请稍候...',
+      mask: true
+    })
+
+    this.setData({ isAdding: true })
+
+    
   }
 })
