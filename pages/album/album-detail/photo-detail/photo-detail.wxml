@@ -1,0 +1,18 @@
+<view class="container-add-photo">
+
+  <image class="img-upload" src="{{image.length>0?'https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/'+image:''}}" bindtap="chooseImage" mode="aspectFit" bindtap="onTapImage"/>
+  <view class="dividing-line"></view>
+  <view class="container-manager">
+    <text class="text-manager">上传：</text>
+    <view class="container-manager-admin">
+      <image class="image-manager" src="{{ownerIcon}}" />
+      <text class="text-manager-name">{{ownerName}}</text>
+    </view>
+  </view>
+  <view class="dividing-line"></view>
+
+  <input class="input-desc" placeholder='相片描述' maxlength='128' bindinput='inputDesc' value='{{desc}}'></input>
+
+  <button class="btn-add" type="primary" bindtap="onTapOK">确定</button>
+
+</view>

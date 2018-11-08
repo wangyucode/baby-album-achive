@@ -1,4 +1,4 @@
-/* pages/album/new-album/new-album.wxss */
+/* pages/album/album-detail/album-detail.wxss */
 .container-new-album{
     display: flex;
     flex-direction: column;

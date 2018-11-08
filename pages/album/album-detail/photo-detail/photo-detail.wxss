@@ -1,0 +1,57 @@
+.container-add-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img-upload {
+  width: 100%;
+  height: 100vw;
+  background: #eee;
+  align-self: center;
+}
+
+.input-desc {
+  margin: 24rpx;
+  border: 1px solid;
+  font-size: 30rpx;
+  border-radius: 10rpx;
+  border-color: #ddd;
+  padding: 10rpx;
+  width: 90%;
+}
+
+.btn-add {
+  position: fixed;
+  width: 92%;
+  align-self: center;
+  bottom: 24rpx;
+}
+
+.container-manager {
+  display: flex;
+  align-items: center;
+}
+
+.container-manager-admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12rpx;
+}
+
+.text-manager {
+  font-size: 32rpx;
+  margin-left: 24rpx;
+}
+
+.text-manager-name {
+  font-size: 26rpx;
+  margin-top: 12rpx;
+}
+
+.image-manager {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+}

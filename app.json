@@ -6,7 +6,9 @@
     "pages/my/support-operation/support-operation",
     "pages/my/support-operation/more-app/more-app",
     "pages/album/new-album/new-album",
-    "pages/album/new-album/new-photo/new-photo"
+    "pages/album/new-album/new-photo/new-photo",
+    "pages/album/album-detail/album-detail",
+    "pages/album/album-detail/photo-detail/photo-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,5 +32,11 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxa6e870e9d665b10b",
+    "wx1d777be6c442da17",
+    "wx8a383e1143f5b2c9",
+    "wx1977172112eb7b61"
+  ]
 }

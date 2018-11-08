@@ -1,12 +1,16 @@
 <!-- pages/album/album.wxml -->
 <view class='container-album'>
+
   <block wx:if="{{albums==null||albums.length==0}}">
     <image class="no-album-image" src="/assets/no_photo.png"></image>
     <text class="no-album-text">没有相册，新建一个吧！</text>
   </block>
-  <block wx:else>
-    <view class="album" wx:for="{{albums}}"></view>
-  </block>
+  <view wx:else class="container-albums">
+    <view class="album" wx:for="{{albums}}" hover-class='album-hover' bindtap="onTapAlbum" data-id="{{item.id}}" data-name="{{item.name}}" data-ownername="{{item.owner.nickName}}" data-ownericon="{{item.owner.avatarUrl}}">
+      <image class='img-cover' src="{{(item.cover==null||item.cover.length==0)?'/assets/no_photo.png':'https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/'+item.cover}}" mode='aspectFill'></image>
+      <text class='text-name'>{{item.name}}</text>
+    </view>
+  </view>
 
   <button class="btn-new-album" plain='ture' open-type="getUserInfo" bindgetuserinfo="getUserInfoResult">
     <image class='img-new-album' src='/assets/icons/new-album.png'></image>
