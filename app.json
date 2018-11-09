@@ -5,10 +5,10 @@
     "pages/my/update-log/update-log",
     "pages/my/support-operation/support-operation",
     "pages/my/support-operation/more-app/more-app",
-    "pages/album/new-album/new-album",
-    "pages/album/new-album/new-photo/new-photo",
+    "pages/album/album-detail/new-photo/new-photo",
     "pages/album/album-detail/album-detail",
-    "pages/album/album-detail/photo-detail/photo-detail"
+    "pages/album/album-detail/photo-detail/photo-detail",
+    "pages/album/join-album/join-album"
   ],
   "window": {
     "backgroundTextStyle": "light",

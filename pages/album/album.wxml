@@ -6,7 +6,7 @@
     <text class="no-album-text">没有相册，新建一个吧！</text>
   </block>
   <view wx:else class="container-albums">
-    <view class="album" wx:for="{{albums}}" hover-class='album-hover' bindtap="onTapAlbum" data-id="{{item.id}}" data-name="{{item.name}}" data-ownername="{{item.owner.nickName}}" data-ownericon="{{item.owner.avatarUrl}}">
+    <view class="album" wx:for="{{albums}}" hover-class='album-hover' bindtap="onTapAlbum" data-id="{{item.id}}" data-name="{{item.name}}" data-ownername="{{item.owner.nickName}}" data-ownericon="{{item.owner.avatarUrl}}" data-cover="{{item.cover}}">
       <image class='img-cover' src="{{(item.cover==null||item.cover.length==0)?'/assets/no_photo.png':'https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/'+item.cover}}" mode='aspectFill'></image>
       <text class='text-name'>{{item.name}}</text>
     </view>

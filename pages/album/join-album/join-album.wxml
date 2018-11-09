@@ -1,0 +1,5 @@
+<!--pages/album/join-album/join-album.wxml-->
+<view class="container-join-album">
+    <text class="text-name">{{album.name}}</text>
+    <image class="img-cover" src="{{album.cover}}"/>
+</view>

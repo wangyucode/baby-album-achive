@@ -91,9 +91,7 @@ Page({
     if (e.detail.errMsg == "getUserInfo:ok") {
       app.globalData.userInfo = e.detail.userInfo;
       app.postUserInfo();
-      wx.navigateTo({
-        url: './new-album/new-album'
-      })
+      this.newAlbum();
     } else {
       wx.showToast({
         icon: "none",
@@ -108,7 +106,39 @@ Page({
       url: './album-detail/album-detail?id=' + e.currentTarget.dataset.id +
         '&name=' + e.currentTarget.dataset.name+
         '&ownerName=' + e.currentTarget.dataset.ownername +
-        '&ownerIcon=' + e.currentTarget.dataset.ownericon
+        '&ownerIcon=' + e.currentTarget.dataset.ownericon+
+        '&cover=' + e.currentTarget.dataset.cover
     })
-  }
+  },
+
+
+  newAlbum: function() {
+    wx.showLoading({
+      title: '请稍候...',
+      mask: true
+    })
+    wx.request({
+      url: 'https://wycode.cn/web/api/public/album/newAlbum',
+      data: {
+        'accessKey': app.globalData.accessKey
+      },
+      success: res => {
+        console.log("newAlbum->", res)
+        if (res.statusCode == 200 && res.data.success) {
+          this.setData({
+            id: res.data.data.id,
+            name: res.data.data.name,
+            owner: res.data.data.owner
+          })
+          wx.hideLoading()
+          this.getAlbums();
+        }else{
+          wx.showToast({
+            icon: "none",
+            title: res.data.error
+          })
+        }
+      }
+    })
+  },
 })

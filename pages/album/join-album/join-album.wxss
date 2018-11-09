@@ -1,0 +1,5 @@
+/* pages/album/join-album/join-album.wxss */
+.container-join-album{
+    display: flex;
+    flex-direction: column;
+}

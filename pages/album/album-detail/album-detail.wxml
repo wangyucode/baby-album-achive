@@ -8,7 +8,7 @@
             <image class="image-manager" src="{{ownerIcon}}" />
             <text class="text-manager-name">{{ownerName}}</text>
         </view>
-        <button class="btn-add-user" plain='ture' open-type="share" hidden='ture'>
+        <button class="btn-add-user" plain='ture' open-type="share">
             <image class="add-user" src="/assets/icons/add.png" />
         </button>
     </view>

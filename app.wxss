@@ -28,9 +28,11 @@
 }
 
 button[type=primary] {
-  background-color: #67d5b5;
+  color: #888;
+  background-color: #A0FEFF;
 }
 
 .button-hover[type=primary] {
-  background-color: #5cc2a5;
+  color: #aaa;
+  background-color: #8DE0E0;
 }

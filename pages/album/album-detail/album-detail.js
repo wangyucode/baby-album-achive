@@ -8,18 +8,19 @@ Page({
   data: {
     id: -1,
     name: "",
-    nameChange:"",
+    nameChange: "",
     ownerName: "",
     ownerIcon: "",
-    photos: []
+    photos: [],
+    cover: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    console.log(options)
+  onLoad: function (options) {
     this.data.id = options.id;
+    this.data.cover = options.cover;
     this.setData({
       name: options.name,
       ownerName: options.ownerName,
@@ -31,77 +32,83 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.getAlbumPhotos();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-    if (this.data.id > 0) {
-
+  onShareAppMessage: function () {
+    let image = this.data.cover;
+    if (image.length == 0) {
+      image = "/assets/no_photo.png"
     } else {
-      return;
+      image = "https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/" + image
+    }
+    return {
+      title: this.data.ownerName + ' 邀请你成为 ' + this.data.name + ' 的成员！',
+      path: "/pages/album/join-album/join-album?id=" + this.data.id,
+      imageUrl: image
     }
 
   },
 
-  inputAlbumName: function(e) {
+  inputAlbumName: function (e) {
     this.data.nameChange = e.detail.value
   },
 
-  onTapOk: function() {
-    if (this.data.nameChange== this.data.name){
+  onTapOk: function () {
+    if (this.data.nameChange == this.data.name) {
       wx.navigateBack({})
-    }else{
+    } else {
       this.changeAlbum()
     }
-    
+
   },
 
-  toUpload: function() {
+  toUpload: function () {
     wx.navigateTo({
-      url: '../new-album/new-photo/new-photo?id=' + this.data.id
+      url: './new-photo/new-photo?id=' + this.data.id
     })
   },
 
-  getAlbumPhotos: function() {
+  getAlbumPhotos: function () {
     wx.showLoading({
       title: '请稍候...',
       mask: true
@@ -112,7 +119,7 @@ Page({
         'accessKey': app.globalData.accessKey,
         'albumId': this.data.id,
         'page': 0,
-        'size': 100, //TODO 分页没做
+        'size': 1000, //TODO 分页没做
       },
       success: res => {
         console.log("getAlbumPhotos->", res)
@@ -126,7 +133,7 @@ Page({
     })
   },
 
-  toPhotoDetail:function(e){
+  toPhotoDetail: function (e) {
     let photo = this.data.photos[e.currentTarget.dataset.index]
     console.log(photo)
     wx.navigateTo({
@@ -139,7 +146,7 @@ Page({
     })
   },
 
-  changeAlbum:function(){
+  changeAlbum: function () {
     wx.showLoading({
       title: '请稍候...',
       mask: true
