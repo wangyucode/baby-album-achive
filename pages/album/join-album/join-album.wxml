@@ -1,5 +1,7 @@
 <!--pages/album/join-album/join-album.wxml-->
 <view class="container-join-album">
     <text class="text-name">{{album.name}}</text>
-    <image class="img-cover" src="{{album.cover}}"/>
+    <image class="img-cover" mode="aspectFit" src="{{album.cover.length>0?'https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/'+album.cover:'/assets/no_photo.png'}}"/>
+
+    <button class="btn-ok" type="primary"  open-type="getUserInfo" bindgetuserinfo="getUserInfoResult">加入</button>
 </view>

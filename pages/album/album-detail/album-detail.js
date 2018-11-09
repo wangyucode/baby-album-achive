@@ -83,7 +83,7 @@ Page({
     }
     return {
       title: this.data.ownerName + ' 邀请你成为 ' + this.data.name + ' 的成员！',
-      path: "/pages/album/join-album/join-album?id=" + this.data.id,
+      path: "/pages/album/join-album/join-album?id=" + this.data.id + "&time=" + new Date().getTime(),
       imageUrl: image
     }
 
