@@ -1,0 +1,11 @@
+<!--pages/my/capacity/capacity.wxml-->
+<view class='view-container'>
+  <text class="text-title">用户存储容量</text>
+  <progress class='progress' activeColor='#56AD56' show-info='true' percent='{{sizePercent}}'></progress>
+  <view class="dividing-line"></view>
+  <text class="text-title">用户相册数量({{count}}/{{countMax}})</text>
+  <progress class='progress' activeColor='#2BA09A'  show-info='true' percent='{{countPercent}}'></progress>
+  <view class="dividing-line"></view>
+
+  <text class="text-desc">云端存储需要支付高昂的费用，故限定每人免费存储容量为1G，按每张照片500K计算，免费额度内可以存储约2000张照片，如需更大容量，您可以添加我的微信 wayne305649490 或发送电子邮件 305649490@qq.com 联系扩容事宜。感谢您的谅解和支持！</text>
+</view>

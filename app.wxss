@@ -28,11 +28,31 @@
 }
 
 button[type=primary] {
-  color: #888;
-  background-color: #A0FEFF;
+  color: #fff;
+  background-color: #33C4BF;
 }
 
 .button-hover[type=primary] {
-  color: #aaa;
-  background-color: #8DE0E0;
+  color: #eee;
+  background-color: #2BA09A;
+}
+
+button[type=warn] {
+  color: #fff;
+  background-color: #e27a78;
+}
+
+.button-hover[type=warn] {
+  color: #eee;
+  background-color: #B56361;
+}
+
+button[type=default] {
+  color: #fff;
+  background-color: #6DDB6D;
+}
+
+.button-hover[type=default] {
+  color: #eee;
+  background-color: #56AD56;
 }

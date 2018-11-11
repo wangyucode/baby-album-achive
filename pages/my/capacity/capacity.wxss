@@ -1,0 +1,21 @@
+/* pages/my/capacity/capacity.wxss */
+.view-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.text-title{
+  font-size: 32rpx;
+  margin: 24rpx;
+}
+
+.text-desc{
+  font-size: 28rpx;
+  margin: 24rpx;
+}
+
+.progress{
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  margin-bottom: 24rpx;
+}

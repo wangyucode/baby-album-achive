@@ -9,9 +9,10 @@ Page({
     image: "",
     desc: "",
     descChange: "",
-    albumId: -1,
     ownerIcon: "",
-    ownerName: ""
+    ownerName: "",
+    albumId: -1,
+    deletePermission:false
   },
 
   /**
@@ -24,7 +25,8 @@ Page({
       image: options.path,
       desc: options.desc,
       ownerName: options.ownerName,
-      ownerIcon: options.ownerIcon
+      ownerIcon: options.ownerIcon,
+      deletePermission: options.deletePermission
     })
     this.data.descChange = this.data.desc
   },
@@ -91,8 +93,6 @@ Page({
   onTapOK: function() {
     if (this.data.descChange != this.data.desc) {
       this.changePhoto()
-    } else {
-      wx.navigateBack({})
     }
   },
 
@@ -110,7 +110,6 @@ Page({
       },
       data: {
         'accessKey': app.globalData.accessKey,
-        'albumId': this.data.albumId,
         'desc': this.data.descChange,
         'photoId': this.data.id
       },
@@ -120,15 +119,96 @@ Page({
           wx.showToast({
             title: "修改成功!"
           });
-          setTimeout(() => {
-            wx.navigateBack({})
-          }, 1200);
         } else {
           wx.hideLoading()
         }
       },
       fail: (res) => {
         wx.hideLoading()
+      }
+    })
+  },
+
+  onTapDelete: function () {
+    var that =this
+    wx.showModal({
+      title: '请确认！',
+      content: '确定删除这张照片吗？',
+      success(res) {
+        if (res.confirm) {
+          that.deletePhoto();
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
+  deletePhoto:function(){
+    wx.showLoading({
+      title: '请稍候...',
+      mask: true
+    })
+
+    wx.request({
+      url: 'https://wycode.cn/web/api/public/album/deleteAlbumPhoto',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        'accessKey': app.globalData.accessKey,
+        'albumId': this.data.albumId,
+        'photoId': this.data.id
+      },
+      success: function (res) {
+        console.log("deletePhoto->", res)
+        if (res.statusCode == 200 && res.data.success) {
+          wx.showToast({
+            title: "删除成功!"
+          });
+          setTimeout(() => {
+            wx.navigateBack({})
+          }, 1200);
+        } else {
+          wx.showToast({
+            icon: "none",
+            title: res.data.error
+          })
+        }
+      }
+    })
+  },
+
+  onTapSetCover: function () {
+    wx.showLoading({
+      title: '请稍候...',
+      mask: true
+    })
+
+    wx.request({
+      url: 'https://wycode.cn/web/api/public/album/setAlbumCover',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        'accessKey': app.globalData.accessKey,
+        'albumId': this.data.albumId,
+        'photoId': this.data.id
+      },
+      success: function (res) {
+        console.log("onTapSetCover->", res)
+        if (res.statusCode == 200 && res.data.success) {
+          wx.showToast({
+            title: "设置成功!"
+          });
+        } else {
+          wx.showToast({
+            icon: "none",
+            title: res.data.error
+          })
+        }
       }
     })
   }

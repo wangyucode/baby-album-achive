@@ -69,10 +69,16 @@ Page({
     })
   },
 
-  enterSupportOoperation: function (e) {
+  enterSupport: function (e) {
     wx.navigateTo({
       url: '/pages/my/support-operation/support-operation',
     })
   },
+
+  enterCapacity:function(){
+    wx.navigateTo({
+      url: '/pages/my/capacity/capacity',
+    })
+  }
 
 })

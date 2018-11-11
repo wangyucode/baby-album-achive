@@ -16,8 +16,13 @@
     <image src='/assets/icons/arrow_down.png' class='list-item-image'></image>
   </button>
   <view class='line'></view>
-  <button class='list-item-button' bindtap='enterSupportOoperation' hover-class='list-item-button-hover'>
+  <button class='list-item-button' bindtap='enterSupport' hover-class='list-item-button-hover'>
     <text class='list-item-text'>支持运营</text>
+    <image src='/assets/icons/arrow_down.png' class='list-item-image'></image>
+  </button>
+  <view class='gray-view'></view>
+  <button class='list-item-button' bindtap='enterCapacity' hover-class='list-item-button-hover'>
+    <text class='list-item-text'>相册容量</text>
     <image src='/assets/icons/arrow_down.png' class='list-item-image'></image>
   </button>
   <view style='flex: 1;background: #ddd;'></view>

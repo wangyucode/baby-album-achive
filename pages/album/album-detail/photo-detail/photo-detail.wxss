@@ -18,14 +18,30 @@
   border-radius: 10rpx;
   border-color: #ddd;
   padding: 10rpx;
-  width: 90%;
+  flex: 1;
 }
 
-.btn-add {
-  position: fixed;
-  width: 92%;
+.container-input {
+  display: flex;
+  align-items: center;
+}
+
+.btn-ok {
   align-self: center;
-  bottom: 24rpx;
+  margin: 24rpx;
+  font-size: 28rpx;
+}
+
+.btn-delete {
+  flex: 1;
+  margin: 24rpx;
+  font-size: 28rpx;
+}
+
+.btn-set-cover {
+  flex: 1;
+  margin: 24rpx;
+  font-size: 28rpx;
 }
 
 .container-manager {

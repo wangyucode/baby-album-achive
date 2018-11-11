@@ -1,6 +1,6 @@
 <view class="container-add-photo">
 
-  <image class="img-upload" src="{{image.length>0?'https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/'+image:''}}" bindtap="chooseImage" mode="aspectFit" bindtap="onTapImage"/>
+  <image class="img-upload" src="{{image.length>0?'https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/'+image:''}}" bindtap="chooseImage" mode="aspectFit" bindtap="onTapImage" />
   <view class="dividing-line"></view>
   <view class="container-manager">
     <text class="text-manager">上传：</text>
@@ -11,8 +11,15 @@
   </view>
   <view class="dividing-line"></view>
 
-  <input class="input-desc" placeholder='相片描述' maxlength='128' bindinput='inputDesc' value='{{desc}}'></input>
+  <view class="container-input">
+    <input class="input-desc" placeholder='相片描述' maxlength='128' bindinput='inputDesc' value='{{desc}}'></input>
+    <button class="btn-ok" type="default" bindtap="onTapOK">确定</button>
 
-  <button class="btn-add" type="primary" bindtap="onTapOK">确定</button>
+  </view>
+
+  <view class="container-input">
+    <button class="btn-delete" type="warn" bindtap="onTapDelete" wx:if="{{deletePermission}}">删除</button>
+    <button class="btn-set-cover" type="primary" bindtap="onTapSetCover">设为封面</button>
+  </view>
 
 </view>

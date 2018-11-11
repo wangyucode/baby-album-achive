@@ -8,7 +8,8 @@
     "pages/album/album-detail/new-photo/new-photo",
     "pages/album/album-detail/album-detail",
     "pages/album/album-detail/photo-detail/photo-detail",
-    "pages/album/join-album/join-album"
+    "pages/album/join-album/join-album",
+    "pages/my/capacity/capacity"
   ],
   "window": {
     "backgroundTextStyle": "light",
