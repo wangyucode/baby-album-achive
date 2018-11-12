@@ -7,6 +7,6 @@
 
     <input class="input-desc" placeholder='相片描述' maxlength='128' bindinput='inputDesc'></input>
 
-    <button class="btn-add" type="primary" loading="{{isUploading||isAdding}}" bindtap="onTapAdd" disabled="{{isUploading||isAdding}}">追加</button>
+    <button class="btn-add" type="primary" bindtap="onTapAdd">追加</button>
 
 </view>

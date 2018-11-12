@@ -2,9 +2,14 @@
 <view class='view-container'>
   <view class='top-view-container'>
     <image class='top-view-image' src='/assets/baby.png'></image>
-    <text class='top-view-title'>宝宝圈亲友云相册 V1.0</text>
-    <text class='top-view-infodetail'>记录宝宝成长，上传云相册永不丢失，只分享给宝宝的亲友们。也可以用于情侣，家人，同学共同维护的私人云相册。</text>
+    <text class='top-view-title'>宝宝圈亲友云相册 V1.1</text>
+    <text class='top-view-infodetail'>记录宝宝成长，上传云相册永不丢失，分享给宝宝的亲友们，即可共同查看和管理宝宝照片。也可以用于情侣，家人，同学共同维护的私人云相册。</text>
   </view>
+  <view class='gray-view'></view>
+  <button class='list-item-button' bindtap='enterCapacity' hover-class='list-item-button-hover'>
+    <text class='list-item-text'>相册容量</text>
+    <image src='/assets/icons/arrow_down.png' class='list-item-image'></image>
+  </button>
   <view class='gray-view'></view>
   <button class='list-item-button' bindtap='enterUpdateLog' hover-class='list-item-button-hover'>
     <text class='list-item-text'>更新日志</text>
@@ -20,10 +25,7 @@
     <text class='list-item-text'>支持运营</text>
     <image src='/assets/icons/arrow_down.png' class='list-item-image'></image>
   </button>
-  <view class='gray-view'></view>
-  <button class='list-item-button' bindtap='enterCapacity' hover-class='list-item-button-hover'>
-    <text class='list-item-text'>相册容量</text>
-    <image src='/assets/icons/arrow_down.png' class='list-item-image'></image>
-  </button>
+  
+  
   <view style='flex: 1;background: #ddd;'></view>
 </view>

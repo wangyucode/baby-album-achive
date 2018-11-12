@@ -8,6 +8,11 @@
             <view class='back-dian'></view>
             <text class='list-item-detail'>主功能模块：相册、我的。</text>
         </view>
+        <text class='list-item-version'>V1.1</text>
+        <view class='list-item-contents'>
+            <view class='back-dian'></view>
+            <text class='list-item-detail'>Bug修复，细节体验优化。</text>
+        </view>
     </view>
 
 

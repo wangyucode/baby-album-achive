@@ -1,1 +1,6 @@
-{"navigationBarTitleText": "相册详情"}
+{
+    "navigationBarTitleText": "相册详情",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#ddd",
+    "backgroundTextStyle": "light"
+}

@@ -2,7 +2,7 @@
 <view class="container-new-album">
   <view class="container-input">
     <input class="input-name" placeholder='相册名' maxlength='32' bindinput='inputAlbumName' value="{{name}}"></input>
-    <button class="btn-ok" type="primary" loading="{{loading}}" bindtap="onTapOk">确定</button>
+    <button class="btn-ok" type="default" bindtap="onTapOk">确定</button>
   </view>
   <view class="dividing-line"></view>
   <view class="container-manager">

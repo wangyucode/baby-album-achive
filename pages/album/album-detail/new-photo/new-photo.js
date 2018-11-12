@@ -1,5 +1,5 @@
 // pages/album/new-album/new-photo/new-photo.js
-var app=getApp()
+var app = getApp()
 Page({
 
   /**
@@ -10,7 +10,6 @@ Page({
     image: "/assets/icons/add_image.png",
     isUploading: false,
     progress: 0,
-    isAdding: false,
     tempFileName: "",
     desc: ""
   },
@@ -18,66 +17,65 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.data.albumId = options.id
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
-  chooseImage: function() {
+  chooseImage: function () {
     wx.chooseImage({
       count: 1,
       sizeType: ["compressed"],
       success: res => {
         this.data.tempFileName = ""
-        // tempFilePath可以作为img标签的src属性显示图片
         this.setData({
           image: res.tempFilePaths[0],
           isUploading: true
@@ -88,7 +86,7 @@ Page({
     })
   },
 
-  uploadImage: function(path) {
+  uploadImage: function (path) {
 
     wx.showLoading({
       title: '请稍候...',
@@ -109,7 +107,7 @@ Page({
           });
         }
       },
-      fail: function(res) {
+      fail: function (res) {
         wx.showToast({
           title: res.errMsg,
           icon: 'none'
@@ -129,11 +127,11 @@ Page({
     })
   },
 
-  inputDesc: function(e) {
+  inputDesc: function (e) {
     this.data.desc = e.detail.value
   },
 
-  onTapAdd: function() {
+  onTapAdd: function () {
     if (this.data.tempFileName == "") {
       wx.showToast({
         title: "请先选择图片",
@@ -145,14 +143,10 @@ Page({
     this.addPhoto()
   },
 
-  addPhoto: function() {
+  addPhoto: function () {
     wx.showLoading({
       title: '请稍候...',
       mask: true
-    })
-
-    this.setData({
-      isAdding: true
     })
 
     wx.request({
@@ -167,30 +161,29 @@ Page({
         'desc': this.data.desc,
         'fileName': this.data.tempFileName
       },
-      success: function(res) {
+      success: (res)=> {
         console.log("addPhoto->", res)
         if (res.statusCode == 200) {
-          if (res.data.success){
+          if (res.data.success) {
             wx.showToast({
               title: "添加成功!"
             });
-          }else{
+            this.data.tempFileName = ""
+            this.setData({
+              image: "/assets/icons/add_image.png"
+            })
+          } else {
             wx.showToast({
               title: res.data.error
             });
           }
-          
-        }else{
+
+        } else {
           wx.hideLoading()
         }
       },
       fail: (res) => {
         wx.hideLoading()
-      },
-      complete:()=>{
-        this.setData({
-          isAdding: false
-        })
       }
     })
   }

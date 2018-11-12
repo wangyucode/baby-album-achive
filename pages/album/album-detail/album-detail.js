@@ -17,13 +17,16 @@ Page({
     writePermission: false,
     deletePermission: false,
     sharePermission: false,
-    members:[]
+    members: [],
+    canLoadMore: false,
+    currentPage: 0,
+    pageSize: 14
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.data.id = options.id;
     this.data.cover = options.cover;
     this.setData({
@@ -32,21 +35,21 @@ Page({
       ownerIcon: options.ownerIcon
     })
     this.data.nameChange = this.data.name;
-    this.getPermission();
-    this.getMembers();
+    
+    wx.startPullDownRefresh();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     if (this.data.readPermission) {
       this.getAlbumPhotos();
     }
@@ -56,35 +59,42 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
-
+  onPullDownRefresh: function () {
+    console.log("onPullDownRefresh")
+    this.getPermission();
+    this.getMembers();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
+    if (this.data.readPermission && this.data.canLoadMore) {
+      console.log("loadMore")
+      this.data.currentPage++;
+      this.getAlbumPhotos();
+    }
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     let image = this.data.cover;
     if (image.length == 0) {
       image = "/assets/no_photo.png"
@@ -92,31 +102,31 @@ Page({
       image = "https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/" + image
     }
     return {
-      title: this.data.ownerName + ' 邀请你成为 ' + this.data.name + ' 的成员！',
+      title: app.globalData.userInfo.nickName + ' 邀请你成为《' + this.data.name + '》的成员！',
       path: "/pages/album/join-album/join-album?id=" + this.data.id + "&time=" + new Date().getTime(),
       imageUrl: image
     }
 
   },
 
-  inputAlbumName: function(e) {
+  inputAlbumName: function (e) {
     this.data.nameChange = e.detail.value
   },
 
-  onTapOk: function() {
+  onTapOk: function () {
     if (this.data.nameChange != this.data.name) {
       this.changeAlbum()
     }
 
   },
 
-  toUpload: function() {
+  toUpload: function () {
     wx.navigateTo({
       url: './new-photo/new-photo?id=' + this.data.id
     })
   },
 
-  getAlbumPhotos: function() {
+  getAlbumPhotos: function () {
     wx.showLoading({
       title: '请稍候...',
       mask: true
@@ -126,14 +136,15 @@ Page({
       data: {
         'accessKey': app.globalData.accessKey,
         'albumId': this.data.id,
-        'page': 0,
-        'size': 1000, //TODO 分页没做
+        'page': this.data.currentPage,
+        'size': this.data.pageSize,
       },
       success: res => {
         console.log("getAlbumPhotos->", res)
         if (res.statusCode == 200 && res.data.success) {
           this.setData({
-            photos: res.data.data.content
+            canLoadMore: !res.data.data.last,
+            photos: this.data.photos.concat(res.data.data.content)
           })
           wx.hideLoading()
         } else {
@@ -142,11 +153,14 @@ Page({
             title: res.data.error
           })
         }
+      },
+      complete: (res) => {
+        wx.stopPullDownRefresh()
       }
     })
   },
 
-  toPhotoDetail: function(e) {
+  toPhotoDetail: function (e) {
     let photo = this.data.photos[e.currentTarget.dataset.index]
     console.log(photo)
     wx.navigateTo({
@@ -160,7 +174,7 @@ Page({
     })
   },
 
-  changeAlbum: function() {
+  changeAlbum: function () {
     wx.showLoading({
       title: '请稍候...',
       mask: true
@@ -177,7 +191,7 @@ Page({
         'albumId': this.data.id,
         'name': this.data.nameChange,
       },
-      success: function(res) {
+      success: function (res) {
         console.log("changeAlbum->", res)
         if (res.statusCode == 200 && res.data.success) {
           wx.showToast({
@@ -193,7 +207,7 @@ Page({
     })
   },
 
-  getPermission: function() {
+  getPermission: function () {
     wx.request({
       url: 'https://wycode.cn/web/api/public/album/getPermission',
       data: {
@@ -209,7 +223,9 @@ Page({
             deletePermission: ((res.data.data & 4) == 4),
             sharePermission: ((res.data.data & 8) == 8)
           })
-
+          this.data.pageSize = this.data.writePermission ? 14 : 15
+          this.data.currentPage = 0
+          this.data.photos = []
           if (this.data.readPermission) {
             this.getAlbumPhotos();
           }
@@ -218,7 +234,7 @@ Page({
     })
   },
 
-  getMembers: function() {
+  getMembers: function () {
     wx.request({
       url: 'https://wycode.cn/web/api/public/album/getMember',
       data: {
