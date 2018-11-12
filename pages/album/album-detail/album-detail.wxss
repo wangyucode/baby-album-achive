@@ -97,9 +97,9 @@ button[plain] {
 }
 
 .img-photo {
-  width: 31.2%;
-  height: 29vw;
+  width: 30.4%;
+  height: 28.3vw;
   box-shadow: 6rpx 6rpx 2px #888;
   border: 1px solid #bfbfbf;
-  margin: 6rpx;
+  margin: 8rpx;
 }
