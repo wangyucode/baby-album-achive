@@ -11,6 +11,11 @@
   flex-direction: column;
 }
 
+.hbox{
+  display: flex;
+  flex-direction: row;
+}
+
 .flex-open {
   flex: 1;
 }

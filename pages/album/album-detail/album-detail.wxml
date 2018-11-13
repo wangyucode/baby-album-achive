@@ -9,31 +9,33 @@
     <text class="text-manager">成员：</text>
     <scroll-view scroll-x class="{{sharePermission?'scroll-manager-add':'scroll-manager'}}">
       <view class="container-manager">
-        <view class="container-manager-admin">
+        <view class="container-manager-admin" bindtap="toMemberDetail" data-owner="{{true}}">
           <image class="image-manager" src="{{ownerIcon}}" />
           <text class="text-manager-name">{{ownerName}}</text>
         </view>
         <block wx:for="{{members}}">
-          <view class="container-manager-admin">
+          <view class="container-manager-admin" bindtap="toMemberDetail" data-index="{{index}}">
             <image class="image-manager" src="{{item.user.avatarUrl}}" />
             <text class="text-manager-name">{{item.user.nickName}}</text>
           </view>
         </block>
-
       </view>
-
     </scroll-view>
     <button class="btn-add-user" plain='ture' open-type="share" wx:if="{{sharePermission}}">
       <image class="add-user" src="/assets/icons/add.png" />
     </button>
   </view>
   <view class="dividing-line"></view>
+  <view class="hbox" wx:if="{{writePermission}}">
+    <button class="btn-delete" type="warn" bindtap="onTapDelete" wx:if="{{isOwner&&photos.length==0}}">
+      删除相册
+    </button>
+    <button class="btn-add-photo" type="primary" bindtap="toUpload">添加相片</button>
+  </view>
+  <view class="dividing-line"></view>
   <view class="container-photo">
     <block wx:for="{{photos}}">
       <image src="{{'https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/'+item.path}}" class="img-photo" mode="aspectFill" bindtap="toPhotoDetail" data-index="{{index}}" />
     </block>
-    <image class="img-photo" src="/assets/icons/add_image.png" bindtap="toUpload" wx:if="{{writePermission}}" />
   </view>
-
-
 </view>

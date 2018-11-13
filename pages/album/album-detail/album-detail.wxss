@@ -103,3 +103,19 @@ button[plain] {
   border: 1px solid #bfbfbf;
   margin: 8rpx;
 }
+
+.hbox{
+  margin: 24rpx;
+  width: 94%;
+}
+
+.btn-delete{
+  flex: 1;
+  margin-right: 24rpx;
+  font-size: 28rpx;
+}
+
+.btn-add-photo{
+  flex: 1;
+  font-size: 28rpx;
+}
