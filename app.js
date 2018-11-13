@@ -81,8 +81,11 @@ App({
                 'nickName': this.globalData.userInfo.nickName,
                 'province': this.globalData.userInfo.province
             },
-            success: function (res) {
+            success: (res)=> {
                 console.log("postUserInfo->", res)
+                if(res.statusCode == 200 && res.data.success){
+                    this.globalData.userInfo = res.data.data
+                }
             }
         })
     }

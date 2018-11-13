@@ -105,7 +105,7 @@ Page({
     wx.navigateTo({
       url: './album-detail/album-detail?id=' + e.currentTarget.dataset.id +
         '&name=' + e.currentTarget.dataset.name+
-        '&ownerName=' + e.currentTarget.dataset.ownername +
+        '&ownerName=' + encodeURIComponent(e.currentTarget.dataset.ownername) +
         '&ownerIcon=' + e.currentTarget.dataset.ownericon+
         '&cover=' + e.currentTarget.dataset.cover
     })

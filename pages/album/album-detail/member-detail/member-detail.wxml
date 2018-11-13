@@ -1,2 +1,20 @@
 <!--pages/album/album-detail/member-detail/member-detail.wxml-->
-<text>pages/album/album-detail/member-detail/member-detail.wxml</text>
+<view class="container">
+  <view class="container-manager">
+    <text class="text-manager">相册成员：</text>
+    <view class="container-manager-admin">
+      <image class="image-manager" src="{{avatarUrl}}" />
+      <text class="text-manager-name">{{nickName}}</text>
+    </view>
+  </view>
+  <view class="dividing-line"></view>
+  <text class="text-permission">成员权限：</text>
+  <checkbox-group bindchange="permissionChange" class="cg_permissions">
+    <label class="checkbox" wx:for="{{permissions}}">
+      <checkbox value="{{item.value}}" checked="{{item.checked}}" disabled="{{!isOwner}}" color="#ee7785"/>{{item.name}}
+    </label>
+  </checkbox-group>
+  <view class="dividing-line"></view>
+<button wx:if="{{isSelf}}" class="btn-quit" type="warn" bindtap="onTapQuit">退出相册成员</button>
+<button wx:if="{{!isSelf&&isOwner}}" class="btn-kick" type="warn" bindtap="onTapKick">踢出相册成员</button>
+</view>

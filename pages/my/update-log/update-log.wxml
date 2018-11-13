@@ -1,6 +1,15 @@
 <!-- /pages/my/update-log/update-log.wxml -->
 <view class='view-container'>
     <view class='list-item'>
+        <text class='list-item-version'>V1.2</text>
+        <view class='list-item-contents'>
+            <view class='back-dian'></view>
+            <text class='list-item-detail'>新增删除相册功能：现在可以删除没有照片的相册。</text>
+        </view>
+        <view class='list-item-contents'>
+            <view class='back-dian'></view>
+            <text class='list-item-detail'>新增成员管理功能：现在相册主人可以配置成员的权限，可以踢出相册成员，成员自己也能主动退出相册。</text>
+        </view>
         <text class='list-item-version'>V1.1</text>
         <view class='list-item-contents'>
             <view class='back-dian'></view>

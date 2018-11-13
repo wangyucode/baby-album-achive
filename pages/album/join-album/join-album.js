@@ -136,7 +136,8 @@ Page({
         console.log("joinAlbum->", res)
         if (res.statusCode == 200 && res.data.success) {
           wx.showToast({
-            title: "加入成功!"
+            title: "加入成功!",
+            mask:true
           });
           setTimeout(() => {
             wx.reLaunch({url:"/pages/album/album"})

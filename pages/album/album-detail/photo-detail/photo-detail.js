@@ -12,21 +12,21 @@ Page({
     ownerIcon: "",
     ownerName: "",
     albumId: -1,
-    deletePermission:false
+    deletePermission: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.data.id = options.id
     this.data.albumId = options.albumId
     this.setData({
       image: options.path,
-      desc: options.desc,
-      ownerName: options.ownerName,
+      desc: decodeURIComponent(options.desc),
+      ownerName: decodeURIComponent(options.ownerName),
       ownerIcon: options.ownerIcon,
-      deletePermission: options.deletePermission
+      deletePermission: options.deletePermission == 'true'
     })
     this.data.descChange = this.data.desc
   },
@@ -34,69 +34,69 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
-  onTapImage: function() {
+  onTapImage: function () {
     wx.previewImage({
       urls: ["https://wycode-baby-album.oss-cn-zhangjiakou.aliyuncs.com/" + this.data.image]
     })
   },
 
-  inputDesc: function(e) {
+  inputDesc: function (e) {
     this.data.descChange = e.detail.value
   },
 
-  onTapOK: function() {
+  onTapOK: function () {
     if (this.data.descChange != this.data.desc) {
       this.changePhoto()
     }
   },
 
-  changePhoto: function() {
+  changePhoto: function () {
     wx.showLoading({
       title: '请稍候...',
       mask: true
@@ -113,7 +113,7 @@ Page({
         'desc': this.data.descChange,
         'photoId': this.data.id
       },
-      success: function(res) {
+      success: function (res) {
         console.log("changePhoto->", res)
         if (res.statusCode == 200 && res.data.success) {
           wx.showToast({
@@ -130,7 +130,7 @@ Page({
   },
 
   onTapDelete: function () {
-    var that =this
+    var that = this
     wx.showModal({
       title: '请确认！',
       content: '确定删除这张照片吗？',
@@ -144,7 +144,7 @@ Page({
     })
   },
 
-  deletePhoto:function(){
+  deletePhoto: function () {
     wx.showLoading({
       title: '请稍候...',
       mask: true
@@ -165,7 +165,8 @@ Page({
         console.log("deletePhoto->", res)
         if (res.statusCode == 200 && res.data.success) {
           wx.showToast({
-            title: "删除成功!"
+            title: "删除成功!",
+            mask: true
           });
           setTimeout(() => {
             wx.navigateBack({})

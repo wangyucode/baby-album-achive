@@ -2,7 +2,7 @@
 <view class='view-container'>
   <view class='top-view-container'>
     <image class='top-view-image' src='/assets/baby.png'></image>
-    <text class='top-view-title'>宝宝圈亲友云相册 V1.1</text>
+    <text class='top-view-title'>宝宝圈亲友云相册 V1.2</text>
     <text class='top-view-infodetail'>记录宝宝成长，上传云相册永不丢失，分享给宝宝的亲友们，即可共同查看和管理宝宝照片。也可以用于情侣，家人，同学共同维护的私人云相册。</text>
   </view>
   <view class='gray-view'></view>

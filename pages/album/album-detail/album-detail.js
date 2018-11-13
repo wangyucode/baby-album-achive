@@ -21,8 +21,8 @@ Page({
     canLoadMore: false,
     currentPage: 0,
     pageSize: 15,
-    isOwner:false,
-    isFromNewPhoto:false
+    isOwner: false,
+    needRefresh: false
   },
 
   /**
@@ -33,7 +33,7 @@ Page({
     this.data.cover = options.cover;
     this.setData({
       name: options.name,
-      ownerName: options.ownerName,
+      ownerName: decodeURIComponent(options.ownerName),
       ownerIcon: options.ownerIcon
     })
     this.data.nameChange = this.data.name;
@@ -51,8 +51,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if(this.data.isFromNewPhoto){
-      this.data.isFromNewPhoto = false
+    if (this.data.needRefresh) {
+      this.data.needRefresh = false
       wx.startPullDownRefresh();
     }
   },
@@ -123,7 +123,7 @@ Page({
   },
 
   toUpload: function () {
-    this.data.isFromNewPhoto = true
+    this.data.needRefresh = true
     wx.navigateTo({
       url: './new-photo/new-photo?id=' + this.data.id
     })
@@ -168,11 +168,11 @@ Page({
     console.log(photo)
     wx.navigateTo({
       url: './photo-detail/photo-detail?id=' + photo.id +
-        '&desc=' + photo.desc +
+        '&desc=' + encodeURIComponent(photo.desc) +
         '&path=' + photo.path +
         '&albumId=' + this.data.id +
         '&deletePermission=' + this.data.deletePermission +
-        '&ownerName=' + photo.uploadUser.nickName +
+        '&ownerName=' + encodeURIComponent(photo.uploadUser.nickName) +
         '&ownerIcon=' + photo.uploadUser.avatarUrl
     })
   },
@@ -231,6 +231,16 @@ Page({
           this.data.photos = []
           if (this.data.readPermission) {
             this.getAlbumPhotos();
+          } else {
+            wx.showToast({
+              title: "你没有查看相册的权限!",
+              icon: "none",
+              mask: true
+            });
+            setTimeout(() => {
+              wx.navigateBack({})
+            }, 1200);
+            wx.stopPullDownRefresh()
           }
         }
       }
@@ -256,7 +266,7 @@ Page({
   },
 
   onTapDelete: function () {
-    var that =this
+    var that = this
     wx.showModal({
       title: '请确认！',
       content: '确定删除此相册吗？',
@@ -268,7 +278,7 @@ Page({
     })
   },
 
-  deleteAlbum:function(){
+  deleteAlbum: function () {
     wx.showLoading({
       title: '请稍候...',
       mask: true
@@ -288,7 +298,8 @@ Page({
         console.log("deleteAlbum->", res)
         if (res.statusCode == 200 && res.data.success) {
           wx.showToast({
-            title: "删除成功!"
+            title: "删除成功!",
+            mask: true
           });
           setTimeout(() => {
             wx.navigateBack({})
@@ -303,29 +314,27 @@ Page({
     })
   },
 
-  toMemberDetail:function(e){
-    if(!this.data.isOwner){
-      wx.showToast({
-        icon: "none",
-        title: "只有相册主人可以修改权限！"
-      })
-      return
-    }
-    if(e.currentTarget.dataset.owner){
+  toMemberDetail: function (e) {
+    if (e.currentTarget.dataset.owner) {
       wx.showToast({
         icon: "none",
         title: "不能编辑相册主人权限！"
       })
       return
     }
+    this.data.needRefresh = true
     let member = this.data.members[e.currentTarget.dataset.index]
     wx.navigateTo({
       url: './member-detail/member-detail?albumId=' + this.data.id +
         '&permission=' + member.permission +
         '&id=' + member.id +
-        '&nickName=' + member.user.nickName +
-        '&avatarUrl=' + member.user.avatarUrl
+        '&nickName=' + encodeURIComponent(member.user.nickName) +
+        '&avatarUrl=' + member.user.avatarUrl +
+        '&isOwner=' + this.data.isOwner +
+        '&isSelf=' + (member.user.id == app.globalData.userInfo.id)
     })
+
+
   }
 
 })
